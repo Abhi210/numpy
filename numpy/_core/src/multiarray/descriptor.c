@@ -1811,6 +1811,15 @@ _convert_from_str(PyObject *obj, int align)
         /* Python byte string characters are unsigned */
         check_num = (unsigned char) type[0];
     }
+    /* PEP 3118 complex types 'Zf', 'Zd', 'Zg' */
+    else if (len == 2 && type[0] == 'Z') {
+        switch (type[1]) {
+            case 'f': check_num = NPY_CFLOAT; break;
+            case 'd': check_num = NPY_CDOUBLE; break;
+            case 'g': check_num = NPY_CLONGDOUBLE; break;
+            default: goto fail;
+        }
+    }
     /* Possibly a kind + size like 'f8' but also could be 'bool' */
     else {
         char *typeend = NULL;

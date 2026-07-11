@@ -572,6 +572,7 @@ _pep3118_standard_map = {
     'd': 'd',
     'Zf': 'F',
     'Zd': 'D',
+    'Zg': 'G',
     's': 'S',
     'w': 'U',
     'O': 'O',
